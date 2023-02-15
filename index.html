@@ -13,19 +13,26 @@
     * {
         box-sizing: border-box;
         margin: auto;
+        font-size: 16px;
+    }
+    #Bai_6 table {
+        border-collapse: collapse;
+    }
+    #Bai_6 table tr td {
+        border: 1px solid black;
     }
 </style>
 
 <body>
     <!-- Bai 2 -->
-    <div id="Bai2" style="text-align: center;">
-        <h1>Heading Centering</h1>
-        <h2>Heading Level #1</h2>
-        <h3>Heading Level #2</h3>
-        <h4>Heading Level #3</h4>
-        <h5>Heading Level #4</h5>
-        <h6>Heading Level #5</h6>
-        <h7>Heading Level #6</h7>
+    <div id="Bai2" style="text-align: center; line-height: 42px;">
+        <h style="font-size: 48px;">Heading Centering</h>
+        <h1>Heading Level #1</h1>
+        <h2>Heading Level #2</h2>
+        <h3>Heading Level #3</h3>
+        <h4>Heading Level #4</h4>
+        <h5>Heading Level #5</h5>
+        <h6>Heading Level #6</h6>
     </div>
     <!-- Bai 3 -->
     <div id="Bai3" style="justify-content: center; display: flex; width: 200px; height: 300px; margin-top: 100px; text-align: justify;">
@@ -33,7 +40,7 @@
             <u>The Street Lawyer</u> by <u>John Grisham.</u> This book is about a lawyer who begins re-evaluting his priorities in life when a bad incident occurs within his law firm. It is <b>weel written</b> and <i>interesting</i>
         </p>
     </div>
-    <div id="Bai3_1" style="width: 50%; height: 300px;">
+    <div id="Bai3_1" style="width: 50%; height: 200px;">
         <div class="top_text">
             <h4>Hight Flying</h4>
             <p>I gazed gown into valleys</p>
@@ -47,6 +54,82 @@
             <p>I gazed gown into valleys</p>
         </div>
     </div>
+    <!-- Bai 4 -->
+    <div id="Bai_4" style="margin-bottom: 100px; display: inline-block; width: 50%; height: 100px;">
+        <ol type="I">
+            <li>Item one</li>
+            <li>Item two</li>
+            <li>Item three</li>
+            <li>Item four
+                <ol type="i">
+                    <li>Item 4.1</li>
+                    <li>Item 4.2</li>
+                    <li>Item 4.3</li>
+                </ol>
+            </li>
+            <li>Item five</li>
+        </ol>
+    </div>
+    <!-- Bai 5 -->
+    <div id="Bai_5" style="margin-bottom: 20px;">
+        <h2 style="margin-bottom: 16px;">Example Cafe Menu</h2>
+        <a href="">Starters</a>
+        <a href="">Main Courses</a>
+        <a href="">Desserts</a>
+        <h2 style="margin-bottom: 16px; margin-top: 16px;">Starters</h2>
+        <ul>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+        </ul>
+        <a href="" style="margin-bottom: 16px; margin-top: 16px;">Back to top</a>
+        <h2 style="margin-bottom: 16px; margin-top: 16px;">Main courses</h2>
+        <ul>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+        </ul>
+        <a href="" style="margin-bottom: 16px; margin-top: 16px;">Back to top</a>
+        <h2 style="margin-bottom: 16px; margin-top: 16px;">Desserts</h2>
+        <ul>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+        </ul>
+        <a href="" style="margin-bottom: 16px; margin-top: 16px;">Back to top</a>
+    </div>
+    <!-- Bai 6 -->
+    <div id="Bai_6" style="margin-bottom: 50px;">
+        <table style="text-align: center;">
+            <tr>
+                <td>row 1</td>
+                <td colspan="4">row 2</td>
+            </tr>
+            <tr>
+                <td rowspan="3">row 1</td>
+                <td>row 2</td>
+                <td>row 3</td>
+                <td colspan="2" rowspan="2">row 4</td>
+
+            </tr>
+            <tr>
+                <td>row 2</td>
+                <td>row 3</td>
+
+            </tr>
+            <tr>
+                <td colspan="2">row 2</td>
+                <td>row 4</td>
+                <td>row 5</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <!-- Bai 7 -->
+
 </body>
 
 </html>
