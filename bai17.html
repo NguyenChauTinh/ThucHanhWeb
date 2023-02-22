@@ -7,17 +7,34 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="">
-        <h2>Survey Form</h2>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis quas perspiciatis debitis tempora, rem iure molestiae ratione provident incidunt est commodi cumque repellendus animi. Voluptas ipsum veritatis magnam incidunt porro.</p>
-        <div>
-            <p>What is your name?</p>
-            <input type="text">
-        </div>
-        <div>
-            <p>What is your date of birht?</p>
-            <input type="date">
-        </div>
-    </form>
+    <div style="width: 50%; text-align: justify;">
+        <form action="">
+            <h2 style="text-align: center;">Survey Form</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis quas perspiciatis debitis tempora, rem iure molestiae ratione provident incidunt est commodi cumque repellendus animi. Voluptas ipsum veritatis magnam incidunt porro.</p>
+            <div>
+                <p>What is your name?</p>
+                <input type="text">
+            </div>
+            <div>
+                <p>What is your date of birth?</p>
+                <label for="month">Month:</label>
+                <select name="month" id=" month">
+                    <option value="January">January</option>
+                    <option value="Febuary">Febuary</option>
+                </select>
+                <label for="date">Date:</label>
+                <select name="date" id="date">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                <label for="year">Year:</label>
+                <select name="year" id="year">
+                    <option value="2003">2003</option>
+                    <option value="2004">2004</option>
+                </select>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
