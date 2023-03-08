@@ -26,9 +26,24 @@
     height: 30px;
     width: 200px;
     border-radius: 4px;
-    padding: 0 16px;
+    padding: 0 22px;
     outline: none;
     border: 1px solid #ccc;
+}
+
+.logo {
+    margin-top: 10px;
+}
+
+.navbar__menu-info {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    font-size: 14px;
+    left: 7px;
+    top: 8px;
 }
 
 
@@ -90,13 +105,13 @@
     height: 36px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: rgb(98, 167, 125);
+    background-color: #589d70;
     color: #fff;
 }
 
 .content--center__info-footer {
     width: 1115px;
-    margin-bottom: 36px;
+    margin: 36px 0;
 }
 
 
@@ -104,8 +119,8 @@
 
 .footer {
     width: 100%;
-    height: 400px;
-    background-color: rgb(42, 42, 49);
+    height: 350px;
+    background-color: #22232f;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -114,20 +129,38 @@
 .footer__container {
     display: flex;
     /* padding: 0 30px; */
-    width: 40%;
+    width: 50%;
+    margin: 50px;
 }
 
 .footer__container-left {
     text-decoration: none;
     list-style: none;
-    margin: 60px 90px 60px;
+    margin: 0 40px;
     /* width: 70%; */
+}
+
+.select-lang {
+    width: 99px;
+    height: 28px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    outline: none;
+    background-color: #22232f !important ;
 }
 
 .footer__container-left--list {
     margin: 20px 0;
     font-size: 16px;
+    font-weight: 400;
     color: #fff;
+    position: relative;
+}
+
+.email-icon {
+    position: absolute;
+    top: 11px;
+    left: 25px;
 }
 
 .footer__container-left--lists {
@@ -142,11 +175,26 @@
 }
 
 .footer__input {
-    width: 350px;
+    width: 270px;
     height: 40px;
     border-radius: 10px;
-    padding: 0 16px;
+    padding: 0 50px;
     font-size: 16px;
+    outline: none;
+    background-color: #22232f;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.footer__input.footer__input-btn {
+    position: absolute;
+    width: 100px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    right: -50px;
+    color: #fff;
+    padding: 0;
+    background-color: #589d70;
 }
 
 .footer__container-left--list-s {
@@ -156,4 +204,6 @@
 
 .list-s {
     margin: 0 12px;
+    font-size: 12px;
+    opacity: 0.8;
 }
