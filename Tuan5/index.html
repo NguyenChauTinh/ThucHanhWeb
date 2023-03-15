@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/fontawe/fontawesome-free-6.3.0-web/css/all.min.css">
+    <style>
+        * {
+            /* padding: 0;
+            margin: 0; */
+            box-sizing: border-box;
+        }
+        
+        #wrapper {
+            display: flex;
+            justify-content: center;
+        }
+        
+        #container {
+            display: flex;
+            justify-content: space-between;
+            width: 1440px;
+        }
+        
+        #left {
+            width: 90px;
+            height: 870px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        #left_above {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        #below {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .item {
+            width: 34px;
+            margin-bottom: 40px;
+        }
+        
+        .item.logo {
+            width: 50px;
+            margin-top: 16px;
+        }
+        
+        #setting {
+            margin-top: 36px;
+            margin-bottom: 16px;
+        }
+        
+        #center {
+            width: 910px;
+            /* background-color: bisque; */
+            margin: 0 32px;
+        }
+        
+        .center__title {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .header__record {
+            height: 46px;
+            margin-top: 16px;
+            margin-right: 20px;
+        }
+        
+        .header__datetime {
+            display: flex;
+            justify-content: flex-start;
+            /* margin-left: 16px; */
+        }
+        
+        .center__img-mid {
+            margin-top: 32px;
+            position: relative;
+        }
+        
+        .img-mid__mic {
+            position: absolute;
+            top: 15px;
+            right: 65px;
+        }
+        
+        .img-mid__online {
+            position: absolute;
+            left: 30px;
+            top: 15px;
+        }
+        
+        .center__img-bottom {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            margin-right: 37px;
+        }
+        
+        .center__img-bottom--items {
+            position: relative;
+        }
+        
+        .center__img-bottom--item {
+            position: absolute;
+            left: 8px;
+            top: 10px;
+        }
+        
+        .center__img-bottom--mic1 {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+        }
+        
+        .center__footer {
+            display: flex;
+            justify-content: center;
+            margin-top: 24px;
+        }
+        
+        .center__footer-item {
+            margin: 0 12px;
+        }
+        
+        #right {
+            width: 440px;
+            /* background-color: aqua; */
+        }
+        
+        .right__header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        
+        .right__add {
+            height: 40px;
+            margin-top: 20px;
+            margin-right: 16px;
+        }
+        
+        .right__member {
+            margin: 16px 0;
+        }
+        
+        .member__lists {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-right: 16px;
+        }
+        
+        .member__lists--users {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .member__lists--title {
+            font-size: 16px;
+            margin-left: 8px;
+        }
+        
+        .member__lists--controls {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .member__lists--controls-item {
+            margin: 0 6px;
+        }
+        
+        .right__footer {
+            margin-top: 64px;
+        }
+        
+        .chat__lists {}
+        
+        .chat__list {}
+        
+        .chat__list--users {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        
+        .chat__list--users-item {
+            margin-right: 10px;
+        }
+        
+        .chat__list--title,
+        .chat__list--users-icon,
+        .chat__list--users-typing {
+            margin-left: 45px;
+        }
+        
+        .chat__list--users-typing {
+            opacity: 0.5;
+        }
+        
+        .chat__list--inputs {
+            display: flex;
+            justify-content: center;
+            /* align-items: center; */
+        }
+        
+        .chat__list--input {
+            display: block;
+            width: 300px;
+            height: 36px;
+            outline: none;
+            border: none;
+            background-color: rgba(31, 26, 26, 0.219);
+            margin-top: 16px;
+            border-radius: 5px;
+            padding-left: 16px;
+        }
+        
+        .chat__list--inputs-send {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="wrapper">
+        <div id="container">
+            <div id="left">
+                <div id="left_above">
+                    <img class="item logo" src="logo.png" alt="">
+                    <img class="item" src="home.png" alt="">
+                    <img class="item" src="chatting.png" alt="">
+                    <img class="item" src="calender.png" alt="">
+                    <img class="item" src="cam.png" alt="">
+                    <img class="item" src="user.png" alt="">
+                </div>
+
+                <div id="below">
+                    <img src="avatar.png" width="44px" alt="">
+                    <img id="setting" src="setting.png" width="54" alt="">
+                </div>
+            </div>
+            <div id="center">
+                <div class="center__title">
+                    <h1 class="header__title">Meeting title</h1>
+                    <img class="header__record" src="./Annotation 2023-03-15 065259.png" alt="">
+                </div>
+                <div class="header__datetime">
+                    <img height="30px" src="./internal.png" alt="">
+                    <img height="30px" src="./date.png" alt="">
+                    <img height="30px" src="./time.png" alt="">
+                </div>
+                <div class="center__container">
+                    <div class="center__img-mid">
+                        <img src="./img_big.png" alt="">
+                        <img class="img-mid__mic" src="./mic_color.png" alt="">
+                        <img class="img-mid__online" src="./benjamin.png" alt="">
+                    </div>
+                    <div class="center__img-bottom">
+                        <div class="center__img-bottom--items">
+                            <img src="./img2.png" alt="">
+                            <img class="center__img-bottom--item" src="./scott.png" alt="">
+                            <img class="center__img-bottom--mic1" src="./mic1.png" alt="">
+                        </div>
+                        <div class="center__img-bottom--items">
+                            <img src="./img1.png" alt="">
+                            <img class="center__img-bottom--item" src="./chu.png" alt="">
+                            <img class="center__img-bottom--mic1" src="./mic2.png" alt="">
+                        </div>
+                        <div class="center__img-bottom--items">
+                            <img src="./img1.png" alt="">
+                            <img class="center__img-bottom--item" src="./jordan.png" alt="">
+                            <img class="center__img-bottom--mic1" src="./mic1.png" alt="">
+                        </div>
+                    </div>
+                    <div class="center__footer">
+                        <img class="center__footer-item" src="./mic_grey_color.png" alt="">
+                        <img class="center__footer-item" src="./cam_color.png" alt="">
+                        <img class="center__footer-item" src="./speaker_grey_color.png" alt="">
+                        <img class="center__footer-item" src="./endding.png" alt="">
+                        <img class="center__footer-item" src="./Button 2179.png" alt="">
+                        <img class="center__footer-item" src="./share.png" alt="">
+                        <img class="center__footer-item" src="./more.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div id="right">
+                <div class="right__header">
+                    <h1>Participants</h1>
+                    <img class="right__add" src="./add.png" alt="">
+                </div>
+                <div class="right__members">
+                    <div class="right__member">
+                        <div class="member__lists">
+                            <div class="member__lists--users">
+                                <img src="./avatar 1322.png" alt="">
+                                <span class="member__lists--title">Benjimin Crawford</span>
+                            </div>
+                            <div class="member__lists--controls">
+                                <img class="member__lists--controls-item" src="./mic1.png" alt="">
+                                <img class="member__lists--controls-item" src="./cam_small.png" alt="">
+                                <img class="member__lists--controls-items" src="./more_small.png" alt="">
+                            </div>
+                        </div>
+                        <div class="member__lists"></div>
+                        <div class="member__lists"></div>
+                        <div class="member__lists"></div>
+                    </div>
+                    <div class="right__member">
+                        <div class="member__lists">
+                            <div class="member__lists--users">
+                                <img src="./avatar 1323.png" alt="">
+                                <span class="member__lists--title">Christan Scott</span>
+                            </div>
+                            <div class="member__lists--controls">
+                                <img class="member__lists--controls-item" src="./mic1.png" alt="">
+                                <img class="member__lists--controls-item" src="./cam_small.png" alt="">
+                                <img class="member__lists--controls-items" src="./more_small.png" alt="">
+                            </div>
+                        </div>
+                        <div class="member__lists"></div>
+                        <div class="member__lists"></div>
+                        <div class="member__lists"></div>
+                    </div>
+                    <div class="right__member">
+                        <div class="member__lists">
+                            <div class="member__lists--users">
+                                <img src="./avatar 1324.png" alt="">
+                                <span class="member__lists--title">Deborah Chu</span>
+                            </div>
+                            <div class="member__lists--controls">
+                                <img class="member__lists--controls-item" src="./mic2.png" alt="">
+                                <img class="member__lists--controls-item" src="./cam_small.png" alt="">
+                                <img class="member__lists--controls-items" src="./more_small.png" alt="">
+                            </div>
+                        </div>
+                        <div class="member__lists"></div>
+                        <div class="member__lists"></div>
+                        <div class="member__lists"></div>
+                    </div>
+                    <div class="right__member">
+                        <div class="member__lists">
+                            <div class="member__lists--users">
+                                <img src="./avatar 1325.png" alt="">
+                                <span class="member__lists--title">Jordan Nieves</span>
+                            </div>
+                            <div class="member__lists--controls">
+                                <img class="member__lists--controls-item" src="./mic1.png" alt="">
+                                <img class="member__lists--controls-item" src="./cam_small.png" alt="">
+                                <img class="member__lists--controls-items" src="./more_small.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right__footer">
+                    <h1>Chat</h1>
+                    <div class="chat__lists">
+                        <div class="chat__list">
+                            <div class="chat__list--users">
+                                <img class="chat__list--users-item" src="./avatar 1326.png" alt="">
+                                <span class="chat__list--users-item">Deborah Chu</span>
+                                <span class="chat__list--users-item" style="opacity: 0.5;">1:12 PM</span>
+                            </div>
+                            <p class="chat__list--title">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores aperiam error autem!</p>
+                        </div>
+                        <div class="chat__list">
+                            <div class="chat__list--users">
+                                <img class="chat__list--users-item" src="./avatar 1327.png" alt="">
+                                <span class="chat__list--users-item">Jordan Nieves</span>
+                                <span class="chat__list--users-item" style="opacity: 0.5;">1:12 PM</span>
+                            </div>
+                            <p class="chat__list--title">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores aperiam error autem!</p>
+                        </div>
+                        <div class="chat__list">
+                            <div class="chat__list--users">
+                                <img class="chat__list--users-item" src="./avatar 1328.png" alt="">
+                                <span class="chat__list--users-item">Benjimin Crawford</span>
+                                <span class="chat__list--users-item" style="opacity: 0.5;">1:12 PM</span>
+                            </div>
+                            <img class="chat__list--users-icon" src="./icon.png" alt="">
+                        </div>
+                        <div class="chat__list">
+                            <div class="chat__list--users">
+                                <img class="chat__list--users-item" src="./avatar 1329.png" alt="">
+                                <span class="chat__list--users-item">Christan Scott</span>
+                                <span class="chat__list--users-item" style="opacity: 0.5;">1:12 PM</span>
+                            </div>
+                        </div>
+                        <span class="chat__list--users-typing">Typing...</span>
+                        <div class="chat__list--inputs">
+                            <input class="chat__list--input" type="text" placeholder="Add message...">
+                            <img class="chat__list--inputs-send" src="./send_input.png" alt="">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
