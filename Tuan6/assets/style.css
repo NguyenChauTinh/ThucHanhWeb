@@ -282,9 +282,9 @@
     padding: 0 50px;
     font-size: 16px;
     outline: none;
-    background-color: aliceblue;
+    background-color: #f4f4f4;
     border: 1px solid #fff;
-    color: #fff;
+    color: #000;
 }
 
 .footer__input.footer__input-btn {
@@ -295,7 +295,7 @@
     right: -50px;
     color: #fff;
     padding: 0;
-    background-color: rgb(11, 139, 182);
+    background-color: rgb(107, 192, 217);
 }
 
 .email-icon {
@@ -307,12 +307,38 @@
 .footer__ul {
     display: flex;
     justify-content: space-evenly;
-    width: 700px;
+    width: 800px;
     margin-top: 32px;
 }
 .footer__ul-items {
     list-style-type: none;
 }
 .footer__li-item {
-    padding: 16px 0;
+    padding: 10px 0;
+}
+
+.footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 52px;
+    margin-bottom: 22px;
+}
+
+.footer__select--item {
+    width: 130px;
+    height: 36px;
+    background-color: #f4f4f4;
+    padding: 4px;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+}
+
+.footer__brand--item {
+    opacity: 0.7;
+}
+
+.footer__link--item {
+    padding: 0 5px;
 }
