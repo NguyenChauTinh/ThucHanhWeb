@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/bootstrap/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap/bootstrap-5.0.2-dist/js/bootstrap.min.js">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container p-0">
+        <header class="header">
+            <img style="width: 100%;" src="./img/Annotation 2023-04-19 071213.png" alt="">
+            <div class="d-flex ">
+                <button type="button" class="btn text-dark">Trang chu</button>
+                <button type="button" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#myModal">Dat lich</button>
+            </div>
+        </header>
+        <main class="container p-0">
+            <table class="table table-bordered ">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Ma benh nhan</th>
+                        <th>Mat khau</th>
+                        <th>Ngay kham</th>
+                        <th>Phu thu dich vu</th>
+                        <th>Chuyen khoa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Heading</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Modal body..
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
