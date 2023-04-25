@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../assets/bootstrap/bootstrap-5.0.2-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap/bootstrap-5.0.2-dist/js/bootstrap.min.js">
+    <link rel="stylesheet" href="../ThiCK/tuan9/bootstrap-4.6.2-dist/bootstrap-4.6.2-dist/css/bootstrap.min.css">
+    <script src="../ThiCK/tuan9/jquery-3.6.4.js"></script>
+    <script src="../ThiCK/tuan9/bootstrap-4.6.2-dist/bootstrap-4.6.2-dist/js/bootstrap.js"></script>
 
     <style>
         * {
@@ -15,60 +16,227 @@
             padding: 0;
             box-sizing: border-box;
         }
+        .error {
+            color: red;
+            font-style: italic;
+        }
+        
+        .errorborder {
+            border: 1px solid red;
+        }
     </style>
+
+<script>
+    // jquery viet it lam nhieu
+    $(document).ready(function() {
+        // xu ly tat ca 
+        function ktraMa() {
+            let maVal = $("#ma").val();
+            let pattenMa = /^(BN)[0-9]{5}$/;
+            if (pattenMa.test(maVal)) //dung
+            {
+                $("#ertenMa").html("*");
+                $('#ma').removeClass('errorborder');
+                $('#ertenMa').removeClass('error');
+
+                return true;
+            } else {
+                $("#ertenMa").html("Ma theo mau BN12345");
+                $("#ertenMa").addClass("error");
+                $("#ma").addClass('errorborder');
+                return false;
+            }
+        }
+        $("#ma").blur(function(e) {
+            // ktra ho ten dung
+            ktraMa();
+        });
+        function ktraMatKhau() {
+            let matKhauVal = $("#matKhau").val();
+            let pattenMatKhau = /(.{6,})/;
+
+            if(pattenMatKhau.test(matKhauVal)) {
+                $('#ertenMatKhau').html('*');
+                $('#maKhau').removeClass('errorborder');
+                $('#ertenMatKhau').removeClass('error');
+                return true;
+            } else {
+                $("#ertenMatKhau").html("Mat Khau phai tu 6 ky tu tro len");
+                $("#ertenMatKhau").addClass("error");
+                $("#maKhau").addClass('errorborder');
+                return false;
+            }
+        }
+        $("#matKhau").blur(function(e) {
+            // ktra ho ten dung
+            ktraMatKhau();
+        });
+        function ktraNgay() {
+            let ngayKhamVal = $("#ngayKham").val();
+            ngayKhamVal = new Date(ngayKhamVal);
+            let ngayHiienTai = new Date();
+
+            if(ngayKhamVal < ngayHiienTai) {
+                $('#ertenNgayKham').html('*');
+                $('#ngayKham').removeClass('errorborder');
+                $('#ertenNgayKham').removeClass('error');
+                return true;
+            } else {
+                $("#ertenNgayKham").html("Ngay kham phai truoc ngay hien tai");
+                $("#ertenNgayKham").addClass("error");
+                $("#ngayKham").addClass('errorborder');
+                return false;
+            }
+        }
+        $("#ngayKham").blur(function(e) {
+            // ktra ho ten dung
+            ktraNgay();
+        });
+
+        // $("#chuyenKhoa").change(function(e) {
+        //     // lay value mon hoc luu vao text
+        //     let chuyenK = $("#chuyenKhao option:selected").val();
+        //     $("#chuyenKhoa").val(chuyenK);
+        // });
+        
+        $("#btnDatLich").click(function(e) {
+            //du lieu trong form -> lay du lieu add table
+            // lay du lieu tren text
+            let ma = $("#ma").val();
+            let mk = $("#matKhau").val();
+            let ngay = $("#ngayKham").val();
+            let ngayK = new Date(ngay).getDate()
+            let thangK = new Date(ngay).getMonth();
+            let namK = new Date(ngay).getFullYear();
+
+            let ngayKham = ngayK + "/" + (thangK+1) + "/" + namK;
+            //lay value tren option trong select
+            let chuyenKhoa = $("#chuyenKhoa option:selected").val();
+            //lay text trong select  mon hoc 
+            // let mon = $("# option:selected").text();
+            // lay value cua text tin chi
+            // let stc = $("#stc").val();
+    
+            //lay value radio: 1 value duy nhat
+            // let loai = $("input[type='radio']:checked").val();
+            // let loai=$("input[name='loai']:checked").val();
+    
+            // lay value checkbox: lay nhieu hon 1 value
+            let loaiDichVu = [];
+            $.each($("input[type='checkbox']:checked"), function() {
+                loaiDichVu.push($(this).val());
+    
+            });
+    
+            if (ktraMa()) {
+                let i = 1;
+                let trnew = "<tr><td>" + (++i) + "</td><td>" + ma + "</td><td>" + mk + "</td><td>" + ngayKham + "</td><td>" + loaiDichVu + "</td><td>"  + chuyenKhoa + "</td></tr>";
+                $("#tb").append(trnew);
+    
+            }
+        });
+
+    });
+</script>
+
 </head>
 
 <body>
-    <div class="container p-0">
-        <header class="header">
-            <img style="width: 100%;" src="./img/Annotation 2023-04-19 071213.png" alt="">
-            <div class="d-flex ">
-                <button type="button" class="btn text-dark">Trang chu</button>
-                <button type="button" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#myModal">Dat lich</button>
-            </div>
-        </header>
-        <main class="container p-0">
-            <table class="table table-bordered ">
-                <thead>
-                    <tr>
-                        <th>STT</th>
-                        <th>Ma benh nhan</th>
-                        <th>Mat khau</th>
-                        <th>Ngay kham</th>
-                        <th>Phu thu dich vu</th>
-                        <th>Chuyen khoa</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                    </tr>
-                </tbody>
+    <div class="container">
+        <div class="row">
+            <img class="w-100" src="./img/Screenshot 2023-04-25 092710.jpg" alt="">
+        </div>
+        <div class="row mt-5">
+            <nav class="nav">
+                <li class="nav-item">
+                    <button class="btn btn-primary" type="button">Trang chủ</button>
+                </li>
+                <li class="nav-item mx-4">
+                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#my-modal">Đặt lịch</button>
+                </li>
+            </nav>
+        </div>
+        <div class="row mt-5">
+            <table id="tb" class="table table-light">
+                <tr>
+                    <th>STT</th>
+                    <th>Mã bệnh nhân</th>
+                    <th>Mật khẩu</th>
+                    <th>Ngày khám</th>
+                    <th>Dịch vụ</th>
+                    <th>Chuyên khoa</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>123456a</td>
+                    <td>BN-0123456</td>
+                    <td>12/8/2020</td>
+                    <td>Khám theo yêu cầu</td>
+                    <td>Ngoại tổng quát</td>
+                </tr>
             </table>
-        </main>
-    </div>
-    <div class="modal" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Modal Heading</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
+        </div>
+        <footer class="mt-5">
+            <div class="row d-flex justify-content-center">
+                <h1>21049361-NguyenChauTinh</h1>
+            </div>
+        </footer>
 
-                <!-- Modal body -->
-                <div class="modal-body">
-                    Modal body..
-                </div>
 
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+
+        <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="my-modal-title">Đặt lịch khám online</h5>
+                        <button class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="get" action="#" class="form" id="form">
+                            <div class="form-group">
+                                <label for="ma">Mã bệnh nhân</label>
+                                <input id="ma" class="form-control" type="text" name="">
+                                <span id="ertenMa">*</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="matKhau">Mật khẩu</label>
+                                <input id="matKhau" class="form-control" type="text" name="">
+                                <span id="ertenMatKhau">*</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="ngayKham">Ngày khám</label>
+                                <input id="ngayKham" class="form-control" type="date" name="">
+                                <span id="ertenNgayKham">*</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="loai">Loại dịch vụ</label>
+                                <div class="form-check-inline">
+                                    <input id="check1" class="form-check-input" type="checkbox" name="" value="Khám theo yêu cầu">
+                                    <label for="check1" class="form-check-label">Khám theo yêu cầu</label>
+                                    <input id="check2" class="form-check-input" type="checkbox" name="" value="Điều trị ngoại trú">
+                                    <label for="check2" class="form-check-label">Điều trị ngoại trú</label>
+                                    <input id="check3" class="form-check-input" type="checkbox" name="" value="Bác sĩ yêu cầu">
+                                    <label for="check3" class="form-check-label">Bác sĩ yêu cầu</label>    
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="chuyenKhoa">Chuyên khoa</label>
+                                <select id="chuyenKhoa" class="form-control" name="">
+                                    <option value="Ngoại tổng quát">Ngoại tổng quát</option>
+                                    <option value="Nhi">Nhi</option>
+                                    <option value="Nội tổng quát">Nội tổng quát</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="button" id="btnDatLich">Đặt lịch</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        21049361-NguyenChauTinh
+                    </div>
                 </div>
             </div>
         </div>
