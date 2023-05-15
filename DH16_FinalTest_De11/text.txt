@@ -1,0 +1,24 @@
+Trang chủ
+Giới thiệu
+Dịch vụ
+Ký gửi hàng hóa
+Liên hệ
+
+Form
+
+Qui định thanh toán
+Khách cọc từ 70% - 100% số tiền của đơn hàng.
+Hàng về sau 24-48 tiếng kể từ khi kho Trung Quốc ký nhận.
+Shop sẽ thanh lý đơn hàng nếu sau 1 tuần khách hàng không thanh toán tiền nhận hàng.
+
+Danh sách kiện hàng hóa gửi
+
+STT	Số serial	Mô tả kiện hàng	Hình ảnh	Trọng lượng (kg)	Phí vận chuyển (VND)
+
+1	OZMO-600	Robot Hút Bụi Lau Nhà Dreame D9 Pro	..\image\Pro9.PNG	3.5	122500
+
+2	SMS25EI00G	Máy rửa chén độc lập Bosch TGB - Serie 2	..\image\Bosch TGB.SMS25EI00G.PNG	48.25	1447500
+
+3		Thùng Cherry	..\image\cherry.PNG	55kg	825000
+
+Mã số: <Mã số sinh viên> - Họ tên: <Họ tên sinh viên>

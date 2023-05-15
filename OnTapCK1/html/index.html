@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery-3.6.4.js"></script>
+    <script src="../js/bootstrap.js"></script>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="container">
+            <header class="d-flex row" style="background-color: rgba(252, 226, 58, 0.5); align-items: center;">
+                <div>
+                    <img src="../img/logo7.png" alt="">
+                </div>
+                <nav class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Dịch vụ</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- <button style="background-color: rgba(252, 226, 58, 0);" class="btn text-primary" type="button" data-toggle="modal" data-target="#my-modal">
+                            Kí gửi hàng hóa
+                        </button> -->
+                        <a class="nav-link" href="" data-toggle="modal" data-target="#my-modal">Kí gửi hàng hóa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Liên hệ</a>
+                    </li>
+                </nav>
+            </header>
+            <div class="row">
+                <div class="col-8">
+                    Form
+                </div>
+                <div class="col-4 bg-light">
+                    <h2>Qui định thanh toán</h2>
+                    <p>* Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                    <p>* Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                    <p>* Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+            <div class="row" style="border-top: 1px solid gray;">
+                <table class="table table-light">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>STT</th>
+                            <th>Số seri</th>
+                            <th>Mô tả kiện hàng</th>
+                            <th>Hình ảnh</th>
+                            <th>Trọng lượng (kg)</th>
+                            <th>Phí vận chuyên(VND)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>OZMO-600</td>
+                            <td>Robot hút bụi</td>
+                            <td>
+                                <img class="" style="width: 80px;" src="../img/May-hut-bui-diet-khuan-UV-Deerma-CM1300.jpg" alt=""> 
+                            </td>
+                            <td>3.5</td>
+                            <td>122500</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <footer class="row d-flex" style="background-color: rgba(252, 226, 58, 0.5); align-items: center; justify-content: center;">
+                <h4>21049361-Nguyen Chau Tinh</h4>
+            </footer>
+        </div>
+        <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="my-modal-title">Thông tin kiện hàng hóa gửi</h5>
+                        <button class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="get" action="">
+                            <div class="form-group">
+                                <label for="seRi">Số seri</label>
+                                <input id="seRi" class="form-control" type="text" name="">
+                                <span id="ckhSeRi">*</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="moTa">Mô tả kiện hàng</label>
+                                <input id="moTa" class="form-control" type="text" name="">
+                                <span id="ckhMoTa">*</span>
+                            </div>                            
+                            <div class="form-group">
+                                <label for="hinhAnh">Hình ảnh</label>
+                                <input id="hinhAnh" class="form-control" type="text" name="">
+                            </div>                            
+                            <div class="form-group">
+                                <label for="trongLuong">Trọng lượng(kg)</label>
+                                <input id="trongLuong" class="form-control" type="text" name="">
+                                <span id="ckhTL">*</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="chiPhi">Chi phí vận chuyển(VND)</label>
+                                <input id="chiPhi" class="form-control" type="text" name="">
+                                <span id="ckhCP">*</span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer d-flex" style="justify-content: flex-start;">
+                        <button class="btn btn-outline-primary" type="button">Xác nhận</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</body>
+</html>
