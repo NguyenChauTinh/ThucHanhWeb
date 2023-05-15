@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery-3.6.4.js"></script>
+    <script src="../js/bootstrap.js"></script>
+
+
+    
+   
+   <script>
+    function updateDonGia() {
+    let kyhan = document.getElementById("txtkyhan").value;
+    document.getElementById("txtdongia").value = kyhan;
+  }
+  function kiemtra_sdt(){
+    let sdt=document.getElementById("txtsdt").value;
+    let patten = /^(09|08|07)\d{8}$/;
+    if(patten.test(sdt)){
+        document.getElementById("ersdt").innerHTML = "hợp lệ";
+                return true;
+    }else{
+        document.getElementById("ersdt").innerHTML = "không hợp lệ sdt đầu số 09 08 07 + 8 số  !";
+                return false;
+    }
+}
+function kiemtra_thongtin(){
+    let sdt=document.getElementById("txtthongtin").value;
+    let patten = /^[A-Z]/;
+    if(patten.test(sdt)){
+        document.getElementById("erthongtin").innerHTML = "hợp lệ";
+                return true;
+    }else{
+        document.getElementById("erthongtin").innerHTML = "không hợp lệ   !";
+                return false;
+    }
+}
+    function kiemtra_diachi(){
+    let sdt=document.getElementById("txtdiachi").value;
+    let patten = /^[\w\d\s]+$/;
+    if(patten.test(sdt)){
+        document.getElementById("erdiachi").innerHTML = "hợp lệ";
+                return true;
+    }else{
+        document.getElementById("erdiachi").innerHTML = "không hợp lệ  !";
+                return false;
+    }
+  }
+
+        function tinhTongThanhToan() {
+             let donGia = document.getElementById("txtkyhan").value;
+
+             let n = 0;
+                if (document.getElementById("txtdk1").checked) n++;
+                if (document.getElementById("txtdk2").checked) n++;
+                if (document.getElementById("txtdk3").checked) n++;
+
+             let tongThanhToan = donGia * n;
+             return tongThanhToan;
+            }
+
+stt=1;
+        function ketqua() {
+            if(kiemtra_diachi()&&kiemtra_sdt()&&kiemtra_thongtin()){
+
+            let tongThanhToan = tinhTongThanhToan();
+            console.log(tongThanhToan);
+            let loaiBao = "";
+    if (document.getElementById("txtdk1").checked) {
+      loaiBao += document.getElementById("txtdk1").value + " ";
+    }
+    if (document.getElementById("txtdk2").checked) {
+      loaiBao += document.getElementById("txtdk2").value + " ";
+    }
+    if (document.getElementById("txtdk3").checked) {
+      loaiBao += document.getElementById("txtdk3").value + " ";
+    }
+    let hinhthuc ="";
+    if (document.getElementById("txtck1").checked) {
+        hinhthuc += document.getElementById("txtck1").value + " ";
+    }
+        if(document.getElementById("txtck2").checked){
+        hinhthuc += document.getElementById("txtck2").value + " ";
+    }
+           
+          let kyhan = document.getElementById("txtkyhan").value;
+          let thongtin = document.getElementById("txtthongtin").value;
+          let sdt = document.getElementById("txtsdt").value;
+          let diachi = document.getElementById("txtdiachi").value;
+      
+        let row_moi="<tr><td>"+stt+"</td><td>"+loaiBao+"</td><td>"+kyhan+"</td><td>"+thongtin+"</td><td>"+diachi+"</td><td>"+tongThanhToan+"</td><td>"+hinhthuc+"</td></tr>";
+                document.getElementById("tbl").innerHTML+=row_moi;
+                stt++;
+        }
+    }
+      </script>
+</head>
+<body>
+    <div class="container">
+        <div class="col-md-12">
+            <header style="border: 1px solid black;">
+                <h4>TUỔI TRẺ ONLINE</h4>
+                <H4>ĐĂNG KÝ MUA BÁO ONLINE</H4>
+            </header>
+        </div>
+       <div class="col-md-12 d-flex">
+        <div class="col-md-3" style="border: 1px solid black;">
+            <p>Báo ngày 07/07/2023</p>
+        </div>
+        <div class="col-9" style="border: 1px solid black;">
+          <!--dk dat báo-->
+            <div class="form-group">
+            <label for="">đăng ký báo</label>
+            <div class="col-9">
+                <input type="checkbox"   value="tuoi tre hang ngay" id="txtdk1">tuoi tre hang ngay
+                <input type="checkbox"   value="tuoi tre cuoi" id="txtdk2">tuoi tre cuoi
+                <input type="checkbox"   value="tuoi tre chu nhat" id="txtdk3">tuoi tre chu nhat
+            </div>
+           </div>
+        <!--kỳ hạn-->
+           <div class="form-group">
+            <label for="">kỳ hạn</label>
+            <div class="col-9">
+               <select name="" id="txtkyhan" class="w-100 " onchange="updateDonGia()">
+                    <option value="300000">3 tháng</option>
+                    <option value="500000">6 tháng</option>
+                    <option value="800000">1 năm</option>
+               </select>
+            </div>
+           </div>
+            <!--don giá-->
+            <div class="form-group">
+                <label for="">đơn giá</label>
+                    <div class="col-9">
+                       <input type="text" class="form-control " id="txtdongia" value="300000" readonly>
+                    </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="">thong tin lien lac</label>
+                    <div class="col-9">
+                       <input type="text" class="form-control " id="txtthongtin" placeholder="tin tran" onblur="kiemtra_thongtin()">
+                        <span id="erthongtin" class="text-danger">(?)</span>
+                    </div>
+            </div>
+
+            <div class="form-group">
+                <label for="">so dien thoai</label>
+                    <div class="col-9">
+                       <input type="text" class="form-control " id="txtsdt" placeholder="0947672075" onblur="kiemtra_sdt()">
+                       <span id="ersdt" class="text-danger">(?)</span>
+                    </div>
+            </div>
+
+            <div class="form-group">
+                <label for="">địa chỉ nhận báo</label>
+                    <div class="col-9">
+                       <input type="text" class="form-control " id="txtdiachi" placeholder="go vap" onblur="kiemtra_diachi()">
+                       <span id="erdiachi" class="text-danger">(?)</span>
+                    </div>
+            </div>
+
+            <div class="form-group">
+                <label for="">hình thức thanh toán</label>
+                <div class="col-9">
+                    <input type="radio"   value="chuyển khoản" id="txtck1">chuyển khoản
+                    <input type="radio"   value="tiền mặt" id="txtck2">tiền mặt
+                </div>
+               </div>
+
+            <div class="form-group d-flex">
+                <div class="col-2">
+                    <input type="button" class="btn btn-info" value="Dat Báo" onclick="ketqua()">
+                </div>
+                
+            </div>
+
+            <div class="col-12">
+                <table class="table table-bordered mt-3" id="tbl">
+                    <tr>
+                        <th>STT</th>
+                        <th>đặt báo</th>
+                        <th>kỳ hạn</th>
+                        <th>thông tin liên lạc</th>
+                        <th>dc nhận báo</th>
+                        <th>tổng thành tiền</th>
+                        <th>hình thức thanh toán</th>
+                    </tr>
+                </table>
+            </div>
+       
+        </div>
+       </div>
+    </div>
+</body>
+</html>

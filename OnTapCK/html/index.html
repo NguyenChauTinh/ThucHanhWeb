@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery-3.6.4.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/bootstrap.bundle.js"></script>
+
+
+    <style>
+        .nav_con {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid black;
+            width: 150px; 
+            z-index: 1;
+        }
+        .ac_nav:hover .nav_con {
+            display: block;
+        }
+        .error {
+            color: red;
+            font-style: italic;
+        }
+        
+        .errorborder {
+            border: 1px solid red;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+    // xu ly tat ca 
+    function ktraMa() {
+        let maVal = $("#ma").val();
+        let pattenMa = /^[0-9]{10}$/;
+        if (pattenMa.test(maVal)) //dung
+        {
+            $("#maSV").html("*");
+            $('#ma').removeClass('errorborder');
+            $('#maSV').removeClass('error');
+
+            return true;
+        } else {
+            $("#maSV").html("Sai ma");
+            $("#maSV").addClass("error");
+            $("#ma").addClass('errorborder');
+            return false;
+        }
+    }
+    $("#ma").blur(function(e) {
+        // ktra ho ten dung
+        ktraMa();
+    });
+    function ktraTen() {
+        let tenVal = $("#ten").val();
+        let pattenTen = /^([A-Zà-ỹ]{1}[a-zà-ỹ]*\s)+([A-Zà-ỹ]{1}[a-zà-ỹ]*)$/;
+
+        if(pattenTen.test(tenVal)) {
+            $('#hoTen').html('*');
+            $('#ten').removeClass('errorborder');
+            $('#hoTen').removeClass('error');
+            return true;
+        } else {
+            $("#hoTen").html("sai ten");
+            $("#hoTen").addClass("error");
+            $("#ten").addClass('errorborder');
+            return false;
+        }
+    }
+    $("#ten").blur(function(e) {
+        // ktra ho ten dung
+        ktraTen();
+    });
+    function ktraNgay() {
+        let ngayVal = $("#ngay").val();
+        var day = new Date(ngayVal);
+        var today = new Date();
+        today.setDate(today.getDate() - 7);
+        if(day < today) {
+            $('#ngayTG').html('*');
+            $('#ngay').removeClass('errorborder');
+            $('#ngayTG').removeClass('error');
+            return true;
+        } else {
+            $("#ngayTG").html("Ngay phai truoc ngay hien tai");
+            $("#ngayTG").addClass("error");
+            $("#ngay").addClass('errorborder');
+            return false;
+        }
+    }
+    $("#ngay").blur(function(e) {
+        // ktra ho ten dung
+        ktraNgay();
+    });
+    function ktraEmail() {
+        let emailVal = $("#email").val();
+        let pattenEmail = /^([A-Za-z0-9_.]{6,32})@iuh.edu.vn$/;
+        if(pattenEmail.test(emailVal)) {
+            $('#fEmail').html('*');
+            $('#email').removeClass('errorborder');
+            $('#fEmail').removeClass('error');
+            return true;
+        } else {
+            $("#fEmail").html("sai email");
+            $("#fEmail").addClass("error");
+            $("#email").addClass('errorborder');
+            return false;
+        }
+    }
+    $("#email").blur(function(e) {
+        // ktra ho ten dung
+        ktraEmail();
+    });
+    function ktraSDT() {
+        let sdtVal = $("#sdt").val();
+        let pattenSDT = /^\d{10}$/;
+
+        if(pattenSDT.test(sdtVal)) {
+            $('#soDienThoai').html('*');
+            $('#sdt').removeClass('errorborder');
+            $('#soDienThoai').removeClass('error');
+            return true;
+        } else {
+            $("#soDienThoai").html("sai sdt");
+            $("#soDienThoai").addClass("error");
+            $("#sdt").addClass('errorborder');
+            return false;
+        }
+    }
+    $("#sdt").blur(function(e) {
+        // ktra ho ten dung
+        ktraSDT();
+    });
+
+    // $("#chuyenKhoa").change(function(e) {
+    //     // lay value mon hoc luu vao text
+    //     let chuyenK = $("#chuyenKhao option:selected").val();
+    //     $("#chuyenKhoa").val(chuyenK);
+    // });
+    
+    $("#btnLuu").click(function(e) {
+        //du lieu trong form -> lay du lieu add table
+        if(ktraMa() && ktraEmail() && ktraNgay() && ktraSDT() && ktraTen()) {
+            // lay du lieu tren text
+            let ma = $("#ma").val();
+            let ten = $("#ten").val();
+            let ngay = $("#ngay").val();
+            let email = $("#email").val();
+            let sdt = $("#sdt").val()
+
+
+            // let ngayK = new Date(ngay).getDate()
+            // let thangK = new Date(ngay).getMonth();
+            // let namK = new Date(ngay).getFullYear();
+    
+            // let ngayKham = ngayK + "/" + (thangK+1) + "/" + namK;
+            //lay value tren option trong select
+            // let chuyenKhoa = $("#chuyenKhoa option:selected").val();
+            //lay text trong select  mon hoc 
+            // let mon = $("# option:selected").text();
+            // lay value cua text tin chi
+            // let stc = $("#stc").val();
+    
+            //lay value radio: 1 value duy nhat
+            // let loai = $("input[type='radio']:checked").val();
+            // let loai=$("input[name='loai']:checked").val();
+    
+            // lay value checkbox: lay nhieu hon 1 value
+            // let loaiDichVu = [];
+            // $.each($("input[type='checkbox']:checked"), function() {
+            //     loaiDichVu.push($(this).val());
+    
+            // });
+            let i = 1;
+            let trnew = "<tr><td>" + (++i) + "</td><td>" + ma + "</td><td>" + ten + "</td><td>" + ngay + "</td><td>" + email + "</td><td>"  + sdt + "</td></tr>";
+            $("#table_body").append(trnew);
+        }
+    });
+
+    });
+    </script>
+</head>
+<body>
+    <div class="app">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <img src="../img/logo.PNG" alt="">
+                </div>
+                <div class="col-8">
+                    <p class="text-center" style="font-size: 30px;">
+                        ĐOÀN THANH NIÊN THÀNH PHỐ HỒ CHÍ MINH
+                    </p>
+                    <p class="text-center" style="font-size: 18px; color: brown;">
+                        ĐOÀN THANH NIÊN TRƯỜNG ĐẠI HỌC CÔNG NGHIỆP THÀNH PHỐ HỒ CHÍ MINH
+                    </p>
+                </div>
+            </div>
+            <div class="row" style="background-color: rgb(130, 220, 255);">
+                <nav class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">TRANG CHỦ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">DOÀN THỂ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">SỰ KIỆN</a>
+                    </li>
+                    <li class="nav-item ac_nav">
+                        <a class="nav-link " href="#">HOẠT DỘNG</a>
+                        <nav class="nav-vertical nav_con">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="modal" data-target="#my-modal">ĐĂNG KÍ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">THAM GIA</a>
+                            </li>
+                        </nav>
+                    </li>
+                    
+                </nav>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <img src="../img/ngayhoithanhnien.JPG" class="rounded-circle w-100" alt="">
+                </div>
+                <div class="col-6">
+                    <span style="font-size: 30px;">TIN NỔI BẬT</span>
+                    <div style="background-color: rgb(130, 220, 255);">
+                        <ol type="I" class="text-primary">
+                            <li>Mùa hè xanh</li>
+                            <li>Thanh niên tình nguyện</li>
+                            <li>Tấm lòng vàng</li>
+                            <li>Hiến máu nhân đạo</li>
+                            <li>Bảo vệ môi trường sạch</li>
+                            <li>Thi đua lập thành tích chào mừng 26-3</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div style="font-size: 30px; text-align: center;" class="my-3">DANH SÁCH ĐĂNG KÍ HOẠT ĐỘNG MÙA HÈ XANH</div>
+            <div class="row">
+                <table class="table table-light">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã SV</th>
+                            <th>Tên SV</th>
+                            <th>Ngày tham gia</th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table_body">
+                        <tr>
+                            <td>1</td>
+                            <td>1234567890</td>
+                            <td>Tran Anh Khang</td>
+                            <td>2021-06-25</td>
+                            <td>thu@iuh.edu.vn</td>
+                            <td>0979-768-549</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="bg-primary w-100 text-right pt-4" style="height: 50px; color: white;">
+                    © 2021-2023 Đoàn thanh niên - Trường đại học Công Nghiệp TP.Hồ Chí Minh
+                </div>
+            </div>
+
+        </div>
+        <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" style="padding-left: 140px;" id="my-modal-title">THÔNG TIN ĐĂNG KÍ</h5>
+                        <button class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="get" action="#" class="form" id="form">
+                            <div class="form-group">
+                                <label for="ma">Mã sinh viên</label>
+                                <input id="ma" class="form-control" type="text" name="">
+                                <span id="maSV">*</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="ten">Họ tên</label>
+                                <input id="ten" class="form-control" type="text" name="">
+                                <span id="hoTen">*</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="ngay">Ngày tham gia</label>
+                                <input id="ngay" class="form-control" type="date" name="">
+                                <span id="ngayTG">*</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input id="email" class="form-control" type="text" name="">
+                                <span id="fEmail">*</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="sdt">Số điện thoại</label>
+                                <input id="sdt" class="form-control" type="text" name="">
+                                <span id="soDienThoai">*</span>
+                            </div>  
+                            <div class="form-group">
+                                <button class="btn btn-danger w-100" type="button" id="btnLuu">Lưu</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        Footer
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

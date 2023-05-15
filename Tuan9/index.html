@@ -25,120 +25,6 @@
             border: 1px solid red;
         }
     </style>
-
-<script>
-    // jquery viet it lam nhieu
-    $(document).ready(function() {
-        // xu ly tat ca 
-        function ktraMa() {
-            let maVal = $("#ma").val();
-            let pattenMa = /^(BN)[0-9]{5}$/;
-            if (pattenMa.test(maVal)) //dung
-            {
-                $("#ertenMa").html("*");
-                $('#ma').removeClass('errorborder');
-                $('#ertenMa').removeClass('error');
-
-                return true;
-            } else {
-                $("#ertenMa").html("Ma theo mau BN12345");
-                $("#ertenMa").addClass("error");
-                $("#ma").addClass('errorborder');
-                return false;
-            }
-        }
-        $("#ma").blur(function(e) {
-            // ktra ho ten dung
-            ktraMa();
-        });
-        function ktraMatKhau() {
-            let matKhauVal = $("#matKhau").val();
-            let pattenMatKhau = /(.{6,})/;
-
-            if(pattenMatKhau.test(matKhauVal)) {
-                $('#ertenMatKhau').html('*');
-                $('#maKhau').removeClass('errorborder');
-                $('#ertenMatKhau').removeClass('error');
-                return true;
-            } else {
-                $("#ertenMatKhau").html("Mat Khau phai tu 6 ky tu tro len");
-                $("#ertenMatKhau").addClass("error");
-                $("#maKhau").addClass('errorborder');
-                return false;
-            }
-        }
-        $("#matKhau").blur(function(e) {
-            // ktra ho ten dung
-            ktraMatKhau();
-        });
-        function ktraNgay() {
-            let ngayKhamVal = $("#ngayKham").val();
-            ngayKhamVal = new Date(ngayKhamVal);
-            let ngayHiienTai = new Date();
-
-            if(ngayKhamVal < ngayHiienTai) {
-                $('#ertenNgayKham').html('*');
-                $('#ngayKham').removeClass('errorborder');
-                $('#ertenNgayKham').removeClass('error');
-                return true;
-            } else {
-                $("#ertenNgayKham").html("Ngay kham phai truoc ngay hien tai");
-                $("#ertenNgayKham").addClass("error");
-                $("#ngayKham").addClass('errorborder');
-                return false;
-            }
-        }
-        $("#ngayKham").blur(function(e) {
-            // ktra ho ten dung
-            ktraNgay();
-        });
-
-        // $("#chuyenKhoa").change(function(e) {
-        //     // lay value mon hoc luu vao text
-        //     let chuyenK = $("#chuyenKhao option:selected").val();
-        //     $("#chuyenKhoa").val(chuyenK);
-        // });
-        
-        $("#btnDatLich").click(function(e) {
-            //du lieu trong form -> lay du lieu add table
-            // lay du lieu tren text
-            let ma = $("#ma").val();
-            let mk = $("#matKhau").val();
-            let ngay = $("#ngayKham").val();
-            let ngayK = new Date(ngay).getDate()
-            let thangK = new Date(ngay).getMonth();
-            let namK = new Date(ngay).getFullYear();
-
-            let ngayKham = ngayK + "/" + (thangK+1) + "/" + namK;
-            //lay value tren option trong select
-            let chuyenKhoa = $("#chuyenKhoa option:selected").val();
-            //lay text trong select  mon hoc 
-            // let mon = $("# option:selected").text();
-            // lay value cua text tin chi
-            // let stc = $("#stc").val();
-    
-            //lay value radio: 1 value duy nhat
-            // let loai = $("input[type='radio']:checked").val();
-            // let loai=$("input[name='loai']:checked").val();
-    
-            // lay value checkbox: lay nhieu hon 1 value
-            let loaiDichVu = [];
-            $.each($("input[type='checkbox']:checked"), function() {
-                loaiDichVu.push($(this).val());
-    
-            });
-    
-            if (ktraMa()) {
-                let i = 1;
-                let trnew = "<tr><td>" + (++i) + "</td><td>" + ma + "</td><td>" + mk + "</td><td>" + ngayKham + "</td><td>" + loaiDichVu + "</td><td>"  + chuyenKhoa + "</td></tr>";
-                $("#tb").append(trnew);
-    
-            }
-        });
-
-    });
-</script>
-
 </head>
 
 <body>
@@ -154,26 +40,35 @@
                 <li class="nav-item mx-4">
                     <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#my-modal">Đặt lịch</button>
                 </li>
+                <li>
+                    <select id="my-select" class="form-control" name="">
+                        <option>Text</option>
+                    </select>
+                </li>
             </nav>
         </div>
         <div class="row mt-5">
-            <table id="tb" class="table table-light">
-                <tr>
-                    <th>STT</th>
-                    <th>Mã bệnh nhân</th>
-                    <th>Mật khẩu</th>
-                    <th>Ngày khám</th>
-                    <th>Dịch vụ</th>
-                    <th>Chuyên khoa</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>123456a</td>
-                    <td>BN-0123456</td>
-                    <td>12/8/2020</td>
-                    <td>Khám theo yêu cầu</td>
-                    <td>Ngoại tổng quát</td>
-                </tr>
+            <table class="table table-light">
+                <thead class="thead-light">
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã bệnh nhân</th>
+                        <th>Mật khẩu</th>
+                        <th>Ngày khám</th>
+                        <th>Dịch vụ</th>
+                        <th>Chuyên khoa</th>
+                    </tr>
+                </thead>
+                <tbody id="table_body">
+                    <tr>
+                        <td>1</td>
+                        <td>123456a</td>
+                        <td>BN-0123456</td>
+                        <td>12/8/2020</td>
+                        <td>Khám theo yêu cầu</td>
+                        <td>Ngoại tổng quát</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
         <footer class="mt-5">
@@ -181,7 +76,6 @@
                 <h1>21049361-NguyenChauTinh</h1>
             </div>
         </footer>
-
 
 
         <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
@@ -241,6 +135,7 @@
             </div>
         </div>
     </div>
+    <script src="./main.js"></script>
 </body>
 
 </html>

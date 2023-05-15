@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery-3.6.4.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script>
+        function kiemtra_ten(){
+            let patten= /^[A-Za-z]+( [A-Za-z]{2,})*$/;
+            let hoten=document.getElementById("txtht").value;
+            if(patten.test(hoten)){
+                document.getElementById("errht").innerHTML = "hợp lệ";
+                return true;
+            }else{
+                document.getElementById("errht").innerHTML = " không hợp lệ!";
+                return false;
+            }
+        }
+        function kiemtra_sdt(){
+            let patten= /^\(\d{4}\)\d{3}-\d{3}$/;
+            let hoten=document.getElementById("txtsdt").value;
+            if(patten.test(hoten)){
+                document.getElementById("errsdt").innerHTML = "hợp lệ";
+                return true;
+            }else{
+                document.getElementById("errsdt").innerHTML = " không hợp lệ!";
+                return false;
+            }
+        }
+  
+        
+        stt=1;
+        function ketqua(){
+            let hoten=document.getElementById("txtht").value;
+            let sdt=document.getElementById("txtsdt").value;
+            let ngay=document.getElementById("txtngay").value;
+            let gio=document.getElementById("txtgio").value;
+            let songuoi=document.getElementById("txtsonguoi").value;
+            let loai_tiec= document.getElementById("txtloai").value;
+
+            let loai_phong="";
+            if(document.getElementById("txtphong1").checked){
+                loai_phong=document.getElementById("txtphong1").value;
+            }
+            if(document.getElementById("txtphong2").checked){
+                loai_phong=document.getElementById("txtphong2").value;
+            }
+
+            let loai_dv="";
+            if(document.getElementById("txtdv1").checked){
+                loai_dv+=document.getElementById("txtdv1").value + " ";
+            }
+            if(document.getElementById("txtdv2").checked){
+                loai_dv+=document.getElementById("txtdv2").value +" ";
+            }
+
+               let loai_tv="";
+            if(document.getElementById("txttv").checked){
+                loai_tv+=document.getElementById("txttv").value+" ";
+            }
+            let ghichu= document.getElementById("txtghichu").value;
+
+            let row_moi="<tr><td>"+stt+"</td><td>"+hoten+"</td><td>"+sdt+"</td><td>"+ngay+"</td><td>"+gio+"</td><td>"+songuoi+"</td><td>"+loai_tiec+"</td><td>"+loai_phong+"</td><td>"+loai_tv+"</td><td>"+loai_dv+"</td><td>"+ghichu+"</td></tr>";
+                document.getElementById("tbl").innerHTML+=row_moi;
+                stt++;
+
+
+        }
+    </script>
+    <style>
+        .cap1{
+            position: absolute;
+            float: left;
+            list-style: none;
+            display: flex;
+            margin-top: 5px;
+        }
+        .cap1 a{
+            display: block;
+            text-decoration: none;
+        }
+        .cap2{
+            display: none;
+            background-color: aliceblue;
+        }
+        .cap2 a{
+            width: 150px;
+        }
+        .cap1 a:hover{
+            color: red;
+        }
+        .cap1 li:hover .cap2{
+            display: block;
+            list-style: none;
+            position: absolute;
+            margin-left: -10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="col-md-12">
+            <header >
+                <img src="../img/quanAn.jpg"  width="1170px" alt="" >
+            </header>
+        </div>
+        <div class="col-md-12">
+            <nav class="nav" style="width: 1170px; height: 50px; background-color: rgb(160, 224, 203);">
+                <div>
+                    <ul class="cap1">
+                        <li class="mr-5"><a href="">Trang chủ</a></li>
+                        <li class="mr-5"><a href="">Tổ Chức</a></li>
+                        <li class="mr-5"><a href="">Đăng ký đặt chỗ</a>
+                                <ul class="cap2">
+                                    <li><a href="" data-toggle="modal" data-target="#frm" >Form đặt chỗ</a></li>
+                                </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="col-15 d-flex">
+            <div class="col-9">
+                <table class="table table-bordered mt-3" id="tbl">
+                    <tr class="font-italic" style="font-size: 12px;">
+                        <th>STT</th>
+                        <th>Họ Tên</th>
+                        <th>diện thoại</th>
+                        <th>ngày nhận việc</th>
+                        <th>giờ nhận việc</th>
+                        <th>số người</th>
+                        <th>loại tiệc</th>
+                        <th>loại phòng</th>
+                        <th>thành viên</th>
+                        <th>dịch vụ đi kèm</th>
+                        <th>ghi chú</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-4 mt-3">
+                <div style="background-color: rgb(160, 224, 203); width: 100%;">
+                    <div class="col-4">
+                        <h5>Đặt chỗ</h5>
+                        <div style="width: 300px; background-color: aliceblue; color: red;">
+                            <p>Nhóm gia đình</p>
+                            <p>Nhóm gia đình</p>
+                            <p>Nhóm gia đình</p>
+                        </div>
+                    </div> 
+                    <div class="col-4" >
+                        <h5 style="color: red;">Contact</h5>
+                        <div style="width: 300px;">
+                            <p>gọi tôi :19001900  để nhận gà 45kg</p>
+                        </div>
+                       
+                    </div> 
+                    <div class="col-4" > 
+                        <div style="width: 300px;">
+                            <h5 style="color: red;">Bài viết nổi bậc</h5>
+                           <ol type="1" >
+                            <li>kinh nghiệm ăn gà</li>
+                            <li>kinh nghiệm bắn phi phai</li>
+                            <li>hihi</li>
+                           </ol>
+                        </div>
+                       
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <footer style="background-color: rgb(160, 224, 203); width: 1170px; height:50px;">
+                <p> @CopytRight Trần Trọng Tín_21054421</p>
+            </footer>
+        </div>
+    </div>
+
+    <!--tạo forn hiển thị-->
+    <div class="modal" id="frm">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 600px;">
+                <div class="modal-header">
+                    <h4>thông tin đặt tiệc</h4>
+                    <button data-dismiss="modal" class="close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="form-group">
+                            <label for="" class="col-9 text-left">Họ tên người đặt tiệc: <span id="errht" class="text-danger">*</span></label>
+                            <div class="col-12">
+                                <input type="text" class="form-control" id="txtht" placeholder="họ tên">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-9 text-left">SDT liện hệ: <span id="errsdt" class="text-danger">*</span></label>
+                            <div class="col-12">
+                                <input type="text" class="form-control" id="txtsdt" placeholder="Điện thoại">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-9 text-left">Ngày nhận tiệc: <span id="errngay" class="text-danger">*</span></label>
+                            <div class="col-12">
+                                <input type="date" class="form-control" id="txtngay" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-9 text-left">Giờ nhận tiệc: <span id="errgio" class="text-danger">*</span></label>
+                            <div class="col-12">
+                                <input type="time" class="form-control" id="txtgio">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-9 text-left">Số Người: <span id="errsonguoi" class="text-danger">*</span></label>
+                            <div class="col-12">
+                                <input type="text" class="form-control" id="txtsonguoi">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-9 text-left">Loại Tiệc: <span id="errloai" class="text-danger">*</span></label>
+                            <div class="col-12">
+                                <select  id="txtloai" class="form-control">
+                                    <option value="Tiệc Gà 45KG">Tiệc Gà 45KG</option>
+                                    <option value="Tiệc Gà VIP">Tiệc Gà Vip</option>
+                               </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-3 text-left">Loại phòng: <span id="errphong" class="text-danger">*</span></label>
+                           
+                                <input type="radio"  id="txtphong1" value="VIP" >Vip &nbsp;&nbsp;
+                                <input type="radio"  id="txtphong2" value="Thường" >Thường
+                           
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-3 text-left">Dịch vụ đi kèm: </label>
+                               
+                                    <input type="checkbox"  id="txtdv1" value="Gà bay nóc" >Gà bay nóc &nbsp;&nbsp;
+                                    <input type="checkbox"  id="txtdv2" value="Gà siêu cấp" >Gà siêu cấp
+                              
+                               
+                           
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-3 text-left">Thành Viên: </label>
+                          <input type="checkbox" id="txttv" value="Thành viên" ><span style="color: blue; font: italic;">nếu bạn là thành viên</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-9 text-left">Ghi Chú: </label>
+                            <div class="col-12">
+                                <textarea id="txtghichu" class="form-control" style="width: 500px;" placeholder="không gian tốt"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-12">
+                                <input type="button" class="btn btn-success " value="lưu" style="width: 500px;" onclick="ketqua()">
+                            </div>
+                        </div>
+
+            
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <p style="color: red; text-align: right;">hotline: 19001900</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
