@@ -1,0 +1,31 @@
+{
+  "hospital": [
+    {
+      "id": 1,
+      "name": "BN12345",
+      "pass": "123456",
+      "date": "10/10/2023",
+      "dichVu": "Khám theo yêu cầu",
+      "chuyenKhoa": "Ngoại tổng quát"
+    },
+    {
+      "id": 2,
+      "name": "BN54321",
+      "pass": "54321",
+      "date": "11/10/2023",
+      "dichVu": "Bác sĩ yêu cầu",
+      "chuyenKhoa": "Nôi tổng quát"
+    },
+    {
+      "name": "BN12345",
+      "pass": "agdgsadg",
+      "date": "4/4/2023",
+      "dichVu": [
+        "Điều trị ngoại trú",
+        "Bác sĩ yêu cầu"
+      ],
+      "chuyenKhoa": "Nội tổng quát",
+      "id": 3
+    }
+  ]
+}
