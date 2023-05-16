@@ -16,6 +16,115 @@
             box-sizing: border-box;
         }
     </style>
+    <script>
+        $(document).ready(function() {
+            function ktSeri() {
+                let sr = $("#seRi").val();
+                let patten = /^[A-Z0-9_]{6,}$/;
+                if(patten.test(sr)) {
+                    $("#ckhSeRi").html("*");
+                    return true;
+                } else if(sr == "") {
+                    $("#ckhSeRi").html("<i> kh dc rong </i>");
+                    return false;
+                } else {
+                    $("#ckhSeRi").html("<i> sai ma seri </i>");
+                    return false;
+                }
+            }
+            $("#seRi").blur(function(e) {
+                ktSeri();
+            })
+
+            function ktTL() {
+                let tl = $("#trongLuong").val();
+                if(tl > 0) {
+                    $("#ckhTL").html("*");
+                    return true;
+                } else if(tl==""){
+                    $("#ckhTL").html("<i> Trong luong kh dc rong </i>");
+                    return false;
+                } else {
+                    $("#ckhTL").html("<i> Trong luong > 0 </i>");
+                    return false;
+                }
+            }
+
+            
+            function ktMoTa() {
+                let mt = $("#moTa").val();
+                if(mt != "" ) {
+                    $("#ckhMoTa").html("*");
+                    return true;
+                } else if(mt==""){
+                    $("#ckhMoTa").html("<i> Mo ta k dc rong </i>");
+                    return false;
+                }
+            }
+            
+            $("#moTa").blur(function(e) {
+                ktMoTa();
+            })
+            
+            function tinhTien() {
+                let tl = $("#trongLuong").val();
+                let cp = $("#chiPhi");
+                
+                if(tl <= 20) {
+                    kq = tl * 35000;
+                    cp.val(`${kq}`);
+                    return true;
+                } else if(tl <= 50) {
+                    kq = tl * 30000;
+                    cp.val(`${kq}`);
+                    return true;
+                } else if(tl > 50) {
+                    kq = tl * 15000;
+                    cp.val(`${kq}`);
+                    return true;
+                }
+                
+            }
+
+            $("#trongLuong").blur(function(e) {
+                ktTL();
+                if(ktTL() == true) {
+                    tinhTien();
+                }
+            })
+
+            $("#btnXN").click(function(e) {
+                if(ktMoTa() && ktSeri() && ktTL()) {
+                    let sr = $("#seRi").val();
+                    let mt = $("#moTa").val();
+                    let tl = $("#trongLuong").val();
+                    let cp = $("#chiPhi").val();
+                    let hinh = $("#hinhAnh").val();
+                    
+                    //lay value tren option trong select
+                    // let chuyenKhoa = $("#chuyenKhoa option:selected").val();
+                    //lay text trong select  mon hoc 
+                    // let mon = $("# option:selected").text();
+                    // lay value cua text tin chi
+                    // let stc = $("#stc").val();
+                    //lay value radio: 1 value duy nhat
+                    // let loai = $("input[type='radio']:checked").val();
+                    // let loai=$("input[name='loai']:checked").val();
+    
+                    // lay value checkbox: lay nhieu hon 1 value
+                    // let loaiDichVu = [];
+                    // $.each($("input[type='checkbox']:checked"), function() {
+                    // loaiDichVu.push($(this).val());
+                    // });
+
+                    let i = 1;
+
+                    let trnew = "<tr><td>" + (++i) + "</td><td>" + sr + "</td><td>" + mt + "</td><td>" + hinh + "</td><td>" + tl + "</td><td>" + cp + "</td></tr>";
+                    $("#table_body").append(trnew);
+                }
+            })
+        });
+        </script>
 </head>
 <body>
     <div class="app">
@@ -68,7 +177,7 @@
                             <th>Phí vận chuyên(VND)</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="table_body">
                         <tr>
                             <td>1</td>
                             <td>OZMO-600</td>
@@ -118,13 +227,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="chiPhi">Chi phí vận chuyển(VND)</label>
-                                <input id="chiPhi" class="form-control" type="text" name="">
+                                <input id="chiPhi" class="form-control" type="text" name="" disabled>
                                 <span id="ckhCP">*</span>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer d-flex" style="justify-content: flex-start;">
-                        <button class="btn btn-outline-primary" type="button">Xác nhận</button>
+                        <button id="btnXN" class="btn btn-outline-primary" type="button">Xác nhận</button>
                     </div>
                 </div>
             </div>
